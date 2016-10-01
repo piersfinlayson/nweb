@@ -34,6 +34,7 @@ struct {
   {"tar", "image/tar" },
   {"htm", "text/html" },
   {"html","text/html" },
+  {"bin","application/octet-stream" },
   {0,0} };
 
 void logger(int type, char *s1, char *s2, int socket_fd)
