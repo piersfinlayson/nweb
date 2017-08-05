@@ -136,6 +136,7 @@ int main(int argc, char **argv)
   socklen_t length;
   static struct sockaddr_in cli_addr; /* static = initialised to zeros */
   static struct sockaddr_in serv_addr; /* static = initialised to zeros */
+  int fk=0;
 
   if( argc < 3  || argc > 3 || !strcmp(argv[1], "-?") ) {
     (void)printf("hint: nweb Port-Number Top-Directory\t\tversion %d\n\n"
@@ -165,7 +166,7 @@ int main(int argc, char **argv)
     exit(4);
   }
   /* Become deamon + unstopable and no zombies children (= no wait()) */
-  if(fork() != 0)
+  if(fk && fork() != 0)
     return 0; /* parent returns OK to shell */
   (void)signal(SIGCLD, SIG_IGN); /* ignore child death */
   (void)signal(SIGHUP, SIG_IGN); /* ignore terminal hangups */
